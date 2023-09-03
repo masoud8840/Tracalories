@@ -21,7 +21,10 @@
           <section class="modal-inner" v-if="props.isOpen">
             <div class="modal-header">
               <h4 class="modal-heading">{{ props.modalTitle }}</h4>
-              <i class="fas fa-close text-xl cursor-pointer"></i>
+              <i
+                class="fas fa-close text-xl cursor-pointer"
+                @click="handleClose"
+              ></i>
             </div>
             <slot></slot>
           </section>
@@ -45,7 +48,7 @@ const props = defineProps({
 
 const emits = defineEmits(["close"]);
 function handleClose(e) {
-  if (e.target.localName === "dialog") {
+  if (e.target.localName === "dialog" || e.srcElement.nodeName === "I") {
     emits("close", !props.isOpen);
   }
 }

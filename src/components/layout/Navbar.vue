@@ -21,7 +21,10 @@
     :is-open="isModalOpen"
     @close="closeModal"
   >
-    <form class="modal-body flex flex-col gap-3" @submit.prevent="closeModal">
+    <form
+      class="modal-body flex flex-col gap-3"
+      @submit.prevent="handleFormSubmit"
+    >
       <label for="calories-limit">Daily calories limit</label>
       <input id="calories-limit" type="text" placeholder="Calories" />
       <button>Save</button>
@@ -40,5 +43,10 @@ function openModal() {
 
 function closeModal() {
   isModalOpen.value = false;
+}
+
+function handleFormSubmit(){
+  // for now
+  isModalOpen.value = false
 }
 </script>
