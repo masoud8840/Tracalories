@@ -1,8 +1,8 @@
 <template>
   <Navbar />
-  <h1 class="font-sans">Hello World</h1>
+  <RouterView />
 </template>
 
 <script setup>
-import Navbar from "./components/layout/Navbar.vue";
+import Navbar from "./components/layout/navbar.vue";
 </script>
