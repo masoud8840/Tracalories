@@ -19,4 +19,31 @@
   .navbar-menu .menu-item {
     @apply border-white border text-white px-5 py-2 rounded-md font-medium capitalize hover:bg-white hover:text-black;
   }
+
+  /* Modal.vue */
+  .modal {
+    @apply bg-black/30 backdrop-blur-sm fixed w-full h-full top-0 left-0 z-50 flex items-center justify-center;
+  }
+
+  .modal-inner {
+    @apply bg-white rounded-lg w-full max-w-md;
+  }
+
+  .modal-header {
+    @apply flex justify-between items-center border-b p-4;
+  }
+  .modal-heading {
+    @apply font-medium text-lg;
+  }
+  .modal-body {
+    @apply p-4;
+  }
+
+  input {
+    @apply w-full min-h-[45px] rounded-md px-2 outline-none text-sm focus:shadow-md focus:placeholder:ps-2 placeholder:transition-all placeholder:duration-150;
+  }
+
+  button {
+    @apply bg-black rounded-md bg-transparent hover:bg-gray-400 min-h-[40px] hover:text-white font-medium;
+  }
 }
