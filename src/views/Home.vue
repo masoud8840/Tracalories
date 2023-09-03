@@ -10,6 +10,8 @@
         :card-caption="card.caption"
       ></Card>
     </section>
+
+    <hr />
   </main>
 </template>
 <script setup>

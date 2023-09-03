@@ -48,7 +48,7 @@
   }
 
   .overall-info {
-    @apply flex flex-col lg:grid lg:grid-cols-6 lg:grid-rows-2 gap-4 my-10;
+    @apply flex flex-col lg:grid lg:grid-cols-6 lg:grid-rows-2 gap-4 my-16;
   }
   /* Card.vue */
   .card {
@@ -71,5 +71,9 @@
   }
   .card.card-danger {
     @apply bg-red;
+  }
+
+  hr {
+    @apply border-4 border-gray-200 rounded-full;
   }
 }
