@@ -45,8 +45,8 @@ function closeModal() {
   isModalOpen.value = false;
 }
 
-function handleFormSubmit(){
+function handleFormSubmit() {
   // for now
-  isModalOpen.value = false
+  isModalOpen.value = false;
 }
 </script>

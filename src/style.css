@@ -46,4 +46,30 @@
   button {
     @apply bg-black rounded-md bg-transparent hover:bg-gray-400 min-h-[40px] hover:text-white font-medium;
   }
+
+  .overall-info {
+    @apply flex flex-col lg:grid lg:grid-cols-6 lg:grid-rows-2 gap-4 my-10;
+  }
+  /* Card.vue */
+  .card {
+    @apply p-5 rounded-lg text-center flex flex-col gap-2;
+  }
+  .card h3 {
+    @apply font-semibold text-2xl lg:text-3xl capitalize;
+  }
+  .card p {
+    @apply font-medium text-lg lg:text-xl capitalize;
+  }
+  .card.card-invert {
+    @apply bg-black text-white;
+  }
+  .card.card-flat {
+    @apply bg-gray-100 border border-gray-200;
+  }
+  .card.card-success {
+    @apply bg-green;
+  }
+  .card.card-danger {
+    @apply bg-red;
+  }
 }
