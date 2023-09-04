@@ -102,7 +102,7 @@
   }
 
   .meals {
-    @apply w-full flex flex-col gap-5;
+    @apply grid gap-5 w-full;
   }
 
   .list {

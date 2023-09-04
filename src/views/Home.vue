@@ -14,8 +14,12 @@
     <hr />
 
     <section class="mt-16 flex gap-5">
-      <Meals />
-      <Meals />
+      <section class="w-full">
+        <Meals />
+      </section>
+      <section class="w-full">
+        <Meals />
+      </section>
     </section>
   </main>
 </template>

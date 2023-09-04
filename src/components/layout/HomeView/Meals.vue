@@ -1,15 +1,17 @@
 <template>
-  <section class="meals grid grid-cols-6">
+  <section class="meals">
     <v-input
       placeholder="Filter Meals"
       v-model="mealsFilter"
       class="col-span-6"
     />
     <Heading h-title="Meals/Food items" variant="green" class="col-span-5" />
-    <button class="heading-button button-success">
+    <button class="heading-button button-success" @click="toggleForm">
       <i class="fas fa-add"></i> Add Meal
     </button>
-    <Form class="col-span-6" variant="danger" />
+    <transition>
+      <Form class="col-span-6" variant="danger" v-if="isFormVisible" />
+    </transition>
     <List :items="listItems" variant="success" class="col-span-6" />
   </section>
 </template>
@@ -28,4 +30,9 @@ const listItems = ref([
     calories: 200,
   },
 ]);
+
+const isFormVisible = ref(false);
+function toggleForm() {
+  isFormVisible.value = !isFormVisible.value;
+}
 </script>
