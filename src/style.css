@@ -75,6 +75,18 @@
     @apply bg-red;
   }
 
+  .form {
+    @apply bg-stone-100 p-5 rounded-lg flex flex-col gap-3;
+  }
+  .form button {
+    @apply text-white max-w-[100px];
+  }
+  .meals .form-success button {
+    @apply bg-green hover:bg-green/80;
+  }
+  .meals .form-danger button {
+    @apply bg-red hover:bg-red/80;
+  }
   hr {
     @apply border-4 border-gray-200 rounded-full;
   }
@@ -104,6 +116,10 @@
     @apply font-medium;
   }
   .list li span {
-    @apply px-4 py-1 rounded-md text-white text-lg;
+    @apply px-4 py-1 rounded-md text-white text-lg hover:opacity-80;
+  }
+
+  .heading-button.button-success {
+    @apply text-sm bg-green text-white hover:bg-green/80;
   }
 }

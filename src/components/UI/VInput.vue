@@ -11,7 +11,7 @@
 const props = defineProps({
   placeholder: {
     type: String,
-    default: "Filter",
+    default: "Input",
   },
   modelValue: {
     type: String,
