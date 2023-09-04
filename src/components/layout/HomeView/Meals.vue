@@ -12,7 +12,7 @@
     <transition>
       <Form class="col-span-6" variant="danger" v-if="isFormVisible" />
     </transition>
-    <List :items="listItems" variant="success" class="col-span-6" />
+    <List :items="listItems" variant="danger" class="col-span-6" />
   </section>
 </template>
 
@@ -25,6 +25,10 @@ import Form from "../../UI/Form.vue";
 
 const mealsFilter = ref("");
 const listItems = ref([
+  {
+    title: "Hello",
+    calories: 200,
+  },
   {
     title: "Hello",
     calories: 200,

@@ -106,10 +106,10 @@
   }
 
   .list {
-    @apply flex flex-col gap-3;
+    @apply flex flex-col gap-5;
   }
   .list li {
-    @apply p-5 rounded-lg border border-gray-200 flex justify-between items-center;
+    @apply p-5 rounded-lg border border-gray-200 relative flex justify-between items-center;
   }
   .list li p,
   .list li span {
@@ -117,6 +117,16 @@
   }
   .list li span {
     @apply px-4 py-1 rounded-md text-white text-lg hover:opacity-80;
+  }
+
+  .list .list-delete-btn {
+    @apply text-lg absolute opacity-0 cursor-pointer -top-5 pointer-events-none translate-y-5 right-0 w-5 h-5 flex items-center justify-center transition-all duration-200;
+  }
+  .list.list-success .list-delete-btn {
+    @apply hover:bg-green hover:text-white;
+  }
+  .list.list-danger .list-delete-btn {
+    @apply hover:bg-red hover:text-white;
   }
 
   .heading-button.button-success {
