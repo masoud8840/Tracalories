@@ -12,12 +12,18 @@
     </section>
 
     <hr />
+
+    <section class="mt-16 flex gap-5">
+      <Meals />
+      <Meals />
+    </section>
   </main>
 </template>
+
 <script setup>
 import { ref } from "vue";
 import Card from "../components/UI/Card.vue";
-
+import Meals from "../components/layout/HomeView/Meals.vue";
 const overallInfoCards = ref([
   {
     title: 2000,

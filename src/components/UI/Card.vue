@@ -12,7 +12,7 @@ const props = defineProps({
     default: "flat",
   },
   cardTitle: {
-    type: String,
+    type: Number,
     default: "Card Title",
   },
   cardCaption: {
