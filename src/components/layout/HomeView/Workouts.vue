@@ -73,6 +73,8 @@ function handleSubmit(e) {
 
   e.currentTarget.children[0].value = "";
   e.currentTarget.children[1].value = "";
+  
+  isFormVisible.value = false;
 }
 
 function handleDelete(id) {
