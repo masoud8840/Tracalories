@@ -18,7 +18,7 @@
         <Meals />
       </section>
       <section class="w-full">
-        <Meals />
+        <Workouts />
       </section>
     </section>
   </main>
@@ -28,6 +28,8 @@
 import { ref } from "vue";
 import Card from "../components/UI/Card.vue";
 import Meals from "../components/layout/HomeView/Meals.vue";
+import Workouts from "../components/layout/HomeView/Workouts.vue";
+
 const overallInfoCards = ref([
   {
     title: 2000,
