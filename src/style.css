@@ -74,6 +74,10 @@
   .list.list-danger span {
     @apply bg-red;
   }
+  .card.card-warning,
+  .list.list-warning span {
+    @apply bg-orange;
+  }
 
   .form {
     @apply bg-stone-100 p-5 rounded-lg flex flex-col gap-3;
@@ -81,11 +85,17 @@
   .form button {
     @apply text-white max-w-[100px];
   }
-  .meals .form-success button {
+  .meals .form-success button,
+  .workouts .form-success button {
     @apply bg-green hover:bg-green/80;
   }
-  .meals .form-danger button {
+  .meals .form-danger button,
+  .workouts .form-danger button {
     @apply bg-red hover:bg-red/80;
+  }
+  .meals .form-warning button,
+  .workouts .form-warning button {
+    @apply bg-orange hover:bg-orange/80;
   }
   hr {
     @apply border-4 border-gray-200 rounded-full;
@@ -94,14 +104,18 @@
   .heading {
     @apply text-xl font-medium py-2 border-s-2 ps-2;
   }
-  .heading.heading-green {
+  .heading.heading-success {
     @apply border-s-green;
   }
-  .heading.heading-red {
+  .heading.heading-danger {
     @apply border-s-red;
   }
+  .heading.heading-warning {
+    @apply border-s-orange;
+  }
 
-  .meals {
+  .meals,
+  .workouts {
     @apply grid gap-5 w-full;
   }
 
@@ -128,8 +142,17 @@
   .list.list-danger .list-delete-btn {
     @apply hover:bg-red hover:text-white;
   }
+  .list.list-warning .list-delete-btn {
+    @apply hover:bg-orange hover:text-white;
+  }
 
   .heading-button.button-success {
     @apply text-sm bg-green text-white hover:bg-green/80;
+  }
+  .heading-button.button-danger {
+    @apply text-sm bg-red text-white hover:bg-red/80;
+  }
+  .heading-button.button-warning {
+    @apply text-sm bg-orange text-white hover:bg-orange/80;
   }
 }
