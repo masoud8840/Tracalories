@@ -21,7 +21,12 @@
     <p class="error-msg text-red font-medium text-sm" v-if="error">
       {{ error }}
     </p>
-    <List :items="listItems" variant="warning" class="col-span-6" />
+    <List
+      :items="listItems"
+      variant="warning"
+      class="col-span-6"
+      @delete-item="handleDelete"
+    />
   </section>
 </template>
 
@@ -63,12 +68,14 @@ function handleSubmit(e) {
     title,
     calories,
   };
-  console.log(newWorkoutObj);
-
   listItems.value.push(newWorkoutObj);
   error.value = "";
 
   e.currentTarget.children[0].value = "";
   e.currentTarget.children[1].value = "";
+}
+
+function handleDelete(id) {
+  listItems.value = listItems.value.filter((item) => item.id !== id);
 }
 </script>
