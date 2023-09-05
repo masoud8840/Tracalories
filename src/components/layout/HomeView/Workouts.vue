@@ -7,7 +7,7 @@
     />
     <Heading h-title="Workouts items" variant="warning" class="col-span-5" />
     <button class="heading-button button-warning" @click="toggleForm">
-      <i class="fas fa-add"></i> Add Meal
+      <i class="fas fa-add"></i> Add Workout
     </button>
     <transition>
       <Form
@@ -35,16 +35,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const workoutsFilter = ref("");
 
-const listItems = ref([
-  {
-    title: "Hello",
-    calories: 200,
-  },
-  {
-    title: "Hello",
-    calories: 200,
-  },
-]);
+const listItems = ref([]);
 
 const isFormVisible = ref(false);
 function toggleForm() {
