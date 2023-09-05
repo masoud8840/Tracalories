@@ -31,6 +31,7 @@ import VInput from "../../UI/VInput.vue";
 import Heading from "../../UI/Heading.vue";
 import Form from "../../UI/Form.vue";
 import List from "../../UI/List.vue";
+import { v4 as uuidv4 } from "uuid";
 
 const workoutsFilter = ref("");
 
@@ -67,9 +68,11 @@ function handleSubmit(e) {
   }
 
   const newWorkoutObj = {
+    id: uuidv4(),
     title,
     calories,
   };
+  console.log(newWorkoutObj);
 
   listItems.value.push(newWorkoutObj);
   error.value = "";
