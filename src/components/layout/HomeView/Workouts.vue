@@ -17,6 +17,10 @@
         @submit.prevent="handleSubmit"
       />
     </transition>
+
+    <p class="error-msg text-red font-medium text-sm" v-if="error">
+      {{ error }}
+    </p>
     <List :items="listItems" variant="warning" class="col-span-6" />
   </section>
 </template>
@@ -46,12 +50,21 @@ function toggleForm() {
   isFormVisible.value = !isFormVisible.value;
 }
 
+const error = ref("");
 function handleSubmit(e) {
   const formData = new FormData(e.currentTarget);
   const title = formData.get("title");
   const calories = formData.get("calories");
 
-  if (title.trim() === "" || calories.trim() === "") return;
+  if (title.trim() === "" || calories.trim() === "") {
+    error.value = "You can't leave inputs blank";
+    return;
+  }
+
+  if (isNaN(Number(calories))) {
+    error.value = "Calories amount must be a number";
+    return;
+  }
 
   const newWorkoutObj = {
     title,
@@ -59,5 +72,9 @@ function handleSubmit(e) {
   };
 
   listItems.value.push(newWorkoutObj);
+  error.value = "";
+
+  e.currentTarget.children[0].value = "";
+  e.currentTarget.children[1].value = "";
 }
 </script>
