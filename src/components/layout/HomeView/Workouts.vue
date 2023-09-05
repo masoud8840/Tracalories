@@ -10,7 +10,12 @@
       <i class="fas fa-add"></i> Add Meal
     </button>
     <transition>
-      <Form class="col-span-6" variant="warning" v-if="isFormVisible" />
+      <Form
+        class="col-span-6"
+        variant="warning"
+        v-if="isFormVisible"
+        @submit.prevent="handleSubmit"
+      />
     </transition>
     <List :items="listItems" variant="warning" class="col-span-6" />
   </section>
@@ -39,5 +44,20 @@ const listItems = ref([
 const isFormVisible = ref(false);
 function toggleForm() {
   isFormVisible.value = !isFormVisible.value;
+}
+
+function handleSubmit(e) {
+  const formData = new FormData(e.currentTarget);
+  const title = formData.get("title");
+  const calories = formData.get("calories");
+
+  if (title.trim() === "" || calories.trim() === "") return;
+
+  const newWorkoutObj = {
+    title,
+    calories,
+  };
+
+  listItems.value.push(newWorkoutObj);
 }
 </script>
