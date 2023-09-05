@@ -58,7 +58,7 @@ const overallInfoCards = ref([
   {
     title: 2000,
     caption: "calories remaining",
-    type: "danger",
+    type: "success",
     extraClasses: "lg:col-span-2",
   },
 ]);

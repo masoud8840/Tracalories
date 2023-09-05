@@ -1,7 +1,7 @@
 <template>
   <form :class="`form form-${props.variant}`">
-    <v-input placeholder="Enter Meal" />
-    <v-input placeholder="Enter Calories" />
+    <v-input placeholder="Enter Meal" name="title" />
+    <v-input placeholder="Enter Calories" name="calories" />
     <button type="submit">
       {{ props.buttonLabel }}
     </button>
