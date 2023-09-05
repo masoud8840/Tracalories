@@ -22,7 +22,7 @@
       {{ error }}
     </p>
     <List
-      :items="listItems"
+      :items="filteredListItem"
       variant="warning"
       class="col-span-6"
       @delete-item="handleDelete"
@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import VInput from "../../UI/VInput.vue";
 import Heading from "../../UI/Heading.vue";
 import Form from "../../UI/Form.vue";
@@ -41,6 +41,14 @@ import { v4 as uuidv4 } from "uuid";
 const workoutsFilter = ref("");
 
 const listItems = ref([]);
+const filteredListItem = computed(() => {
+  if (workoutsFilter.value.trim()) {
+    return listItems.value.filter((item) =>
+      item.title.toLowerCase().includes(workoutsFilter.value.toLowerCase())
+    );
+  }
+  return listItems.value;
+});
 
 const isFormVisible = ref(false);
 function toggleForm() {
@@ -73,7 +81,7 @@ function handleSubmit(e) {
 
   e.currentTarget.children[0].value = "";
   e.currentTarget.children[1].value = "";
-  
+
   isFormVisible.value = false;
 }
 
