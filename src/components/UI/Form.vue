@@ -1,7 +1,11 @@
 <template>
   <form :class="`form form-${props.variant}`">
-    <v-input placeholder="Enter Meal" name="title" />
-    <v-input placeholder="Enter Calories" name="calories" />
+    <v-input
+      v-for="(input, index) in props.inputs"
+      :key="index"
+      :name="input.name"
+      :placeholder="input.placeholder"
+    />
     <button type="submit">
       {{ props.buttonLabel }}
     </button>
@@ -18,6 +22,10 @@ const props = defineProps({
   variant: {
     type: String,
     default: "",
+  },
+  inputs: {
+    type: Array,
+    default: [],
   },
 });
 </script>
