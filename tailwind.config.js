@@ -4,7 +4,7 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx,vue}"],
   theme: {
     fontFamily: {
-      sans: ["Montserrat", "Poppins", "sans-serif"],
+      sans: ["Montserrat", "Poppins", "Vazirmatn", "sans-serif"],
     },
     extend: {
       colors: {
