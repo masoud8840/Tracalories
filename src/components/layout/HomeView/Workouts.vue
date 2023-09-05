@@ -38,6 +38,9 @@ import Heading from "../../UI/Heading.vue";
 import Form from "../../UI/Form.vue";
 import List from "../../UI/List.vue";
 import { v4 as uuidv4 } from "uuid";
+import { useWorkoutsStore } from "../../../store/workouts.js";
+
+const workoutsStore = useWorkoutsStore();
 
 const workoutsFilter = ref("");
 
@@ -52,16 +55,15 @@ const formInputs = ref([
   },
 ]);
 
-const listItems = ref([]);
 const filteredListItem = computed(() => {
   if (workoutsFilter.value.trim()) {
-    return listItems.value.filter(
+    return workoutsStore.getWorkouts.filter(
       (item) =>
         item.title.toLowerCase().includes(workoutsFilter.value.toLowerCase()) ||
         item.calories.toString().includes(workoutsFilter.value)
     );
   }
-  return listItems.value;
+  return workoutsStore.getWorkouts;
 });
 
 const isFormVisible = ref(false);
@@ -91,16 +93,15 @@ function handleSubmit(e) {
     title,
     calories,
   };
-  listItems.value.push(newWorkoutObj);
-  error.value = "";
+  workoutsStore.add(newWorkoutObj);
 
+  error.value = "";
   e.currentTarget.children[0].value = "";
   e.currentTarget.children[1].value = "";
-
   isFormVisible.value = false;
 }
 
 function handleDelete(id) {
-  listItems.value = listItems.value.filter((item) => item.id !== id);
+  workoutsStore.delete(id);
 }
 </script>
