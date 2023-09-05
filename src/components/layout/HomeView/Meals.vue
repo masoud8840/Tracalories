@@ -27,7 +27,7 @@
       {{ error }}
     </p>
     <List
-      :items="filteredListItem"
+      :items="mealsList"
       variant="success"
       class="col-span-6"
       @delete-item="handleDelete"
@@ -42,9 +42,22 @@ import Heading from "../../UI/Heading.vue";
 import Form from "../../UI/Form.vue";
 import List from "../../UI/List.vue";
 import { v4 as uuidv4 } from "uuid";
+import { useMealsStore } from "../../../store/meals.js";
+
+const mealsStore = useMealsStore();
 
 const mealsFilter = ref("");
+const mealsList = computed(() => {
+  if (mealsFilter.value.trim()) {
+    return mealsStore.getMeals.filter(
+      (item) =>
+        item.title.toLowerCase().includes(mealsFilter.value.toLowerCase()) ||
+        item.calories.toString().includes(mealsFilter.value)
+    );
+  }
 
+  return mealsStore.getMeals;
+});
 const formInputs = ref([
   {
     name: "title",
@@ -55,18 +68,6 @@ const formInputs = ref([
     placeholder: "Enter Calories",
   },
 ]);
-
-const listItems = ref([]);
-const filteredListItem = computed(() => {
-  if (mealsFilter.value.trim()) {
-    return listItems.value.filter(
-      (item) =>
-        item.title.toLowerCase().includes(mealsFilter.value.toLowerCase()) ||
-        item.calories.toString().includes(mealsFilter.value)
-    );
-  }
-  return listItems.value;
-});
 
 const isFormVisible = ref(false);
 function toggleForm() {
@@ -95,7 +96,8 @@ function handleSubmit(e) {
     title,
     calories,
   };
-  listItems.value.push(newMealObj);
+
+  mealsStore.add(newMealObj);
   error.value = "";
 
   e.currentTarget.children[0].value = "";
@@ -105,6 +107,6 @@ function handleSubmit(e) {
 }
 
 function handleDelete(id) {
-  listItems.value = listItems.value.filter((item) => item.id !== id);
+  mealsStore.delete(id);
 }
 </script>
