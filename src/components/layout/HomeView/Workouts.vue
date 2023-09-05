@@ -18,7 +18,7 @@
       />
     </transition>
 
-    <p class="error-msg text-red font-medium text-sm" v-if="error">
+    <p class="error-msg" v-if="error">
       {{ error }}
     </p>
     <List
@@ -53,6 +53,7 @@ const filteredListItem = computed(() => {
 const isFormVisible = ref(false);
 function toggleForm() {
   isFormVisible.value = !isFormVisible.value;
+  error.value = "";
 }
 
 const error = ref("");

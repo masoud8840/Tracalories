@@ -157,4 +157,8 @@
   .heading-button.button-warning {
     @apply text-sm bg-orange text-white hover:bg-orange/80;
   }
+
+  .error-msg {
+    @apply text-red font-medium text-sm col-span-6;
+  }
 }
