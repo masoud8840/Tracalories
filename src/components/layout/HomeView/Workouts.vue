@@ -15,6 +15,7 @@
         variant="warning"
         v-if="isFormVisible"
         @submit.prevent="handleSubmit"
+        :inputs="formInputs"
       />
     </transition>
 
@@ -40,11 +41,24 @@ import { v4 as uuidv4 } from "uuid";
 
 const workoutsFilter = ref("");
 
+const formInputs = ref([
+  {
+    name: "title",
+    placeholder: "Enter Workout",
+  },
+  {
+    name: "calories",
+    placeholder: "Enter Calories",
+  },
+]);
+
 const listItems = ref([]);
 const filteredListItem = computed(() => {
   if (workoutsFilter.value.trim()) {
-    return listItems.value.filter((item) =>
-      item.title.toLowerCase().includes(workoutsFilter.value.toLowerCase())
+    return listItems.value.filter(
+      (item) =>
+        item.title.toLowerCase().includes(workoutsFilter.value.toLowerCase()) ||
+        item.calories.toString().includes(workoutsFilter.value)
     );
   }
   return listItems.value;

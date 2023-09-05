@@ -59,8 +59,10 @@ const formInputs = ref([
 const listItems = ref([]);
 const filteredListItem = computed(() => {
   if (mealsFilter.value.trim()) {
-    return listItems.value.filter((item) =>
-      item.title.toLowerCase().includes(mealsFilter.value.toLowerCase())
+    return listItems.value.filter(
+      (item) =>
+        item.title.toLowerCase().includes(mealsFilter.value.toLowerCase()) ||
+        item.calories.toString().includes(mealsFilter.value)
     );
   }
   return listItems.value;
