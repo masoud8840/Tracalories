@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { useCaloriesStore } from "./calories.js";
 
 export const useWorkoutsStore = defineStore("workouts", {
   state() {
@@ -16,12 +17,14 @@ export const useWorkoutsStore = defineStore("workouts", {
   actions: {
     add(newWorkout) {
       this.workouts.push(newWorkout);
+      useCaloriesStore().refresh();
     },
 
     delete(workoutId) {
       this.workouts = this.workouts.filter(
         (workout) => workout.id !== workoutId
       );
+      useCaloriesStore().refresh();
     },
   },
 });

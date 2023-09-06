@@ -1,13 +1,17 @@
 import { defineStore } from "pinia";
+import { useMealsStore } from "./meals.js";
+import { useWorkoutsStore } from "./workouts.js";
+
+const savedDailyLimit = localStorage.getItem("dailyLimit") ?? 0;
 
 export const useCaloriesStore = defineStore("calories", {
   state() {
     return {
-      dailyLimit: 3000,
+      dailyLimit: +savedDailyLimit,
       gainOrLoss: 0,
       consumed: 0,
       burned: 0,
-      remaining: 0,
+      remaining: +savedDailyLimit,
     };
   },
 
@@ -30,20 +34,34 @@ export const useCaloriesStore = defineStore("calories", {
   },
 
   actions: {
-    // setDailyLimit(value) {
-    //   this.dailyLimit = value;
-    // },
-    // setGainOrLoss(value) {
-    //   this.gainOrLoss = value;
-    // },
-    // setConsumed(value) {
-    //   this.consumed = value;
-    // },
-    // setBurned(value) {
-    //   this.burned = value;
-    // },
-    // setRemaining(value) {
-    //   this.remaining = value;
-    // },
+    refresh() {
+      this.setConsumed();
+      this.setBurned();
+      this.setGainOrLoss();
+      this.setRemaining();
+    },
+    setDailyLimit(value) {
+      this.dailyLimit = value;
+    },
+    setGainOrLoss() {
+      const value = this.consumed - this.burned - this.dailyLimit;
+      this.gainOrLoss = value;
+    },
+    setConsumed() {
+      let value = 0;
+      const mealsStore = useMealsStore();
+      mealsStore.getMeals.map((meal) => (value += +meal.calories));
+      this.consumed = value;
+    },
+    setBurned() {
+      let value = 0;
+      const workoutsStore = useWorkoutsStore();
+      workoutsStore.getWorkouts.map((workout) => (value += +workout.calories));
+      this.burned = value;
+    },
+    setRemaining() {
+      const value = this.dailyLimit - this.consumed;
+      this.remaining = value;
+    },
   },
 });

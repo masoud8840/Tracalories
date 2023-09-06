@@ -30,7 +30,8 @@
         id="calories-limit"
         type="text"
         placeholder="Calories"
-        v-model="caloriesStore.dailyLimit"
+        v-model="dailyLimit"
+        autofocus
       />
       <button>Save</button>
     </form>
@@ -54,8 +55,11 @@ function closeModal() {
   isModalOpen.value = false;
 }
 
+const dailyLimit = ref(0);
 function handleFormSubmit() {
-  // for now
+  caloriesStore.setDailyLimit(dailyLimit.value);
+  caloriesStore.setRemaining();
+  localStorage.setItem("dailyLimit", dailyLimit.value);
   isModalOpen.value = false;
 }
 </script>
