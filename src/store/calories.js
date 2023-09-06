@@ -42,6 +42,7 @@ export const useCaloriesStore = defineStore("calories", {
     },
     setDailyLimit(value) {
       this.dailyLimit = value;
+      this.refresh();
     },
     setGainOrLoss() {
       const value = this.consumed - this.burned - this.dailyLimit;

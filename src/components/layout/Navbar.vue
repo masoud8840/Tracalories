@@ -31,7 +31,6 @@
         type="text"
         placeholder="Calories"
         v-model="dailyLimit"
-        autofocus
       />
       <button>Save</button>
     </form>

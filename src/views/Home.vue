@@ -41,10 +41,18 @@ const overallInfoCards = ref([
     extraClasses: "lg:col-span-3",
   },
   {
-    title: computed(() => +caloriesStore.getGainOrLoss),
+    title: computed(() => Math.abs(caloriesStore.getGainOrLoss)),
     caption: "Gain/Loss",
     type: "success",
-    extraClasses: "lg:col-span-3 text-white",
+    extraClasses: computed(() => {
+      if (+caloriesStore.getGainOrLoss <= 0) {
+        overallInfoCards.value[1].type = "success";
+        return "lg:col-span-3 text-white";
+      } else {
+        overallInfoCards.value[1].type = "danger";
+        return "lg:col-span-3 text-white";
+      }
+    }),
   },
   {
     title: computed(() => +caloriesStore.getConsumed),
@@ -59,10 +67,18 @@ const overallInfoCards = ref([
     extraClasses: "lg:col-span-2",
   },
   {
-    title: computed(() => +caloriesStore.getRemaining),
+    title: computed(() => Math.abs(caloriesStore.getRemaining)),
     caption: "calories remaining",
     type: "success",
-    extraClasses: "lg:col-span-2",
+    extraClasses: computed(() => {
+      if (+caloriesStore.getGainOrLoss <= 0) {
+        overallInfoCards.value[4].type = "success";
+        return "lg:col-span-2";
+      } else {
+        overallInfoCards.value[4].type = "danger";
+        return "lg:col-span-2";
+      }
+    }),
   },
 ]);
 </script>
