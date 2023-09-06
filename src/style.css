@@ -161,4 +161,11 @@
   .error-msg {
     @apply text-red font-medium text-sm col-span-6;
   }
+
+  .progress-container {
+    @apply w-full bg-gray-200 rounded-full h-3;
+  }
+  .progress-inner {
+    @apply bg-green h-3 rounded-full;
+  }
 }

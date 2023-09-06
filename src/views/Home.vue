@@ -11,7 +11,9 @@
       ></Card>
     </section>
 
-    <hr />
+    <div class="progress-container">
+      <div class="progress-inner" :style="{ width: `${progressValue}%` }"></div>
+    </div>
 
     <section class="mt-16 flex gap-5">
       <section class="w-full">
@@ -81,4 +83,12 @@ const overallInfoCards = ref([
     }),
   },
 ]);
+const progressValue = computed(() => {
+  const value =
+    ((caloriesStore.getRemaining + caloriesStore.getBurned) /
+      caloriesStore.getDailyLimit) *
+    100;
+
+  return value > 100 ? 100 : value;
+});
 </script>
