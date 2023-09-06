@@ -27,5 +27,10 @@ export const useMealsStore = defineStore("meals", {
       useCaloriesStore().refresh();
       localStorage.setItem("meals", JSON.stringify(this.meals));
     },
+
+    reset() {
+      this.meals = [];
+      localStorage.removeItem("meals");
+    },
   },
 });

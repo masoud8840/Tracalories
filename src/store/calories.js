@@ -64,5 +64,15 @@ export const useCaloriesStore = defineStore("calories", {
       const value = this.dailyLimit - this.consumed;
       this.remaining = value;
     },
+
+    reset() {
+      this.dailyLimit = 0;
+      this.gainOrLoss = 0;
+      this.consumed = 0;
+      this.burned = 0;
+      this.remaining = 0;
+
+      localStorage.removeItem("dailyLimit");
+    },
   },
 });

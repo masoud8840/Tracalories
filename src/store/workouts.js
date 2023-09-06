@@ -30,5 +30,10 @@ export const useWorkoutsStore = defineStore("workouts", {
       useCaloriesStore().refresh();
       localStorage.setItem("workouts", JSON.stringify(this.workouts));
     },
+
+    reset() {
+      this.workouts = [];
+      localStorage.removeItem("workouts");
+    },
   },
 });

@@ -10,7 +10,7 @@
           <button class="menu-item" @click="openModal">Set daily limit</button>
         </li>
         <li>
-          <button class="menu-item">Reset day</button>
+          <button class="menu-item" @click="resetStore">Reset day</button>
         </li>
       </ul>
     </nav>
@@ -39,6 +39,8 @@
 
 <script setup>
 import { useCaloriesStore } from "../../store/calories.js";
+import { useMealsStore } from "../../store/meals.js";
+import { useWorkoutsStore } from "../../store/workouts.js";
 import Modal from "../UI/Modal.vue";
 import { ref } from "vue";
 
@@ -60,5 +62,10 @@ function handleFormSubmit() {
   caloriesStore.setRemaining();
   localStorage.setItem("dailyLimit", dailyLimit.value);
   isModalOpen.value = false;
+}
+function resetStore() {
+  caloriesStore.reset();
+  useWorkoutsStore().reset();
+  useMealsStore().reset();
 }
 </script>
