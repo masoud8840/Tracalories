@@ -26,15 +26,24 @@
       @submit.prevent="handleFormSubmit"
     >
       <label for="calories-limit">Daily calories limit</label>
-      <input id="calories-limit" type="text" placeholder="Calories" />
+      <input
+        id="calories-limit"
+        type="text"
+        placeholder="Calories"
+        v-model="caloriesStore.dailyLimit"
+      />
       <button>Save</button>
     </form>
   </Modal>
 </template>
 
 <script setup>
+import { useCaloriesStore } from "../../store/calories.js";
 import Modal from "../UI/Modal.vue";
 import { ref } from "vue";
+
+const caloriesStore = useCaloriesStore();
+
 const isModalOpen = ref(false);
 
 function openModal() {

@@ -25,38 +25,41 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import Card from "../components/UI/Card.vue";
 import Meals from "../components/layout/HomeView/Meals.vue";
 import Workouts from "../components/layout/HomeView/Workouts.vue";
+import { useCaloriesStore } from "../store/calories.js";
+
+const caloriesStore = useCaloriesStore();
 
 const overallInfoCards = ref([
   {
-    title: 2000,
+    title: computed(() => +caloriesStore.getDailyLimit || 0),
     caption: "daily calories limit",
     type: "invert",
     extraClasses: "lg:col-span-3",
   },
   {
-    title: 0,
+    title: computed(() => +caloriesStore.getGainOrLoss),
     caption: "Gain/Loss",
     type: "success",
     extraClasses: "lg:col-span-3 text-white",
   },
   {
-    title: 0,
+    title: computed(() => +caloriesStore.getConsumed),
     caption: "Calories consumed",
     type: "flat",
     extraClasses: "lg:col-span-2",
   },
   {
-    title: 0,
+    title: computed(() => +caloriesStore.getBurned),
     caption: "calories burned",
     type: "flat",
     extraClasses: "lg:col-span-2",
   },
   {
-    title: 2000,
+    title: computed(() => +caloriesStore.getRemaining),
     caption: "calories remaining",
     type: "success",
     extraClasses: "lg:col-span-2",
