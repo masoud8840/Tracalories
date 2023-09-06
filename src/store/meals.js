@@ -5,7 +5,7 @@ const savedMeals = localStorage.getItem("meals");
 export const useMealsStore = defineStore("meals", {
   state() {
     return {
-      meals: savedMeals ?? [],
+      meals: JSON.parse(savedMeals) ?? [],
     };
   },
 
@@ -19,11 +19,13 @@ export const useMealsStore = defineStore("meals", {
     add(newMeal) {
       this.meals.push(newMeal);
       useCaloriesStore().refresh();
+      localStorage.setItem("meals", JSON.stringify(this.meals));
     },
 
     delete(mealId) {
       this.meals = this.meals.filter((meal) => meal.id !== mealId);
       useCaloriesStore().refresh();
+      localStorage.setItem("meals", JSON.stringify(this.meals));
     },
   },
 });

@@ -91,4 +91,6 @@ const progressValue = computed(() => {
 
   return value > 100 ? 100 : value;
 });
+
+caloriesStore.refresh();
 </script>

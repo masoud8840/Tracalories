@@ -1,10 +1,12 @@
 import { defineStore } from "pinia";
 import { useCaloriesStore } from "./calories.js";
 
+const savedWorkouts = localStorage.getItem("workouts");
+
 export const useWorkoutsStore = defineStore("workouts", {
   state() {
     return {
-      workouts: [],
+      workouts: JSON.parse(savedWorkouts) ?? [],
     };
   },
 
@@ -18,6 +20,7 @@ export const useWorkoutsStore = defineStore("workouts", {
     add(newWorkout) {
       this.workouts.push(newWorkout);
       useCaloriesStore().refresh();
+      localStorage.setItem("workouts", JSON.stringify(this.workouts));
     },
 
     delete(workoutId) {
@@ -25,6 +28,7 @@ export const useWorkoutsStore = defineStore("workouts", {
         (workout) => workout.id !== workoutId
       );
       useCaloriesStore().refresh();
+      localStorage.setItem("workouts", JSON.stringify(this.workouts));
     },
   },
 });
