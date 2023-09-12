@@ -73,7 +73,7 @@ const overallInfoCards = ref([
     caption: "calories remaining",
     type: "success",
     extraClasses: computed(() => {
-      if (+caloriesStore.getGainOrLoss <= 0) {
+      if (+caloriesStore.getRemaining >= 0) {
         overallInfoCards.value[4].type = "success";
         return "lg:col-span-2";
       } else {
